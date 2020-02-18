@@ -486,7 +486,8 @@ class Crypt_GPG_Engine
                 if (isset($_SERVER['HOME'])) {
                     $this->_homedir = $_SERVER['HOME'];
                 } else {
-                    $this->_homedir = getenv('HOME');
+                    //$this->_homedir = getenv('HOME');
+                    $this->_homedir='/root'.'/.gnupg';
                 }
             }
 
@@ -1723,7 +1724,7 @@ class Crypt_GPG_Engine
             $this->_pipes,
             null,
             $env,
-            null
+            array('binary_pipes' => true)
         );
 
         if (!is_resource($this->_process)) {
