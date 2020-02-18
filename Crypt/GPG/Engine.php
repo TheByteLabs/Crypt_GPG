@@ -1723,7 +1723,7 @@ class Crypt_GPG_Engine
             $this->_pipes,
             null,
             $env,
-            array('binary_pipes' => true)
+            null
         );
 
         if (!is_resource($this->_process)) {
