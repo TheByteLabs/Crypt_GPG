@@ -486,8 +486,7 @@ class Crypt_GPG_Engine
                 if (isset($_SERVER['HOME'])) {
                     $this->_homedir = $_SERVER['HOME'];
                 } else {
-                    //$this->_homedir = getenv('HOME');
-                    $this->_homedir='/root'.'/.gnupg';
+                    $this->_homedir = getenv('HOME');
                 }
             }
 
