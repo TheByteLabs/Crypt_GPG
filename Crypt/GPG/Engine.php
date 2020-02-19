@@ -498,10 +498,6 @@ class Crypt_GPG_Engine
                 );
             }
         }
-        
-        if ($this->_homedir == '/var/cache/nginx/.gnupg') {
-            $this->_homedir = '~/.gnupg';
-        }
         // attempt to create homedir if it does not exist
         if (!is_dir($this->_homedir)) {
             if (@mkdir($this->_homedir, 0777, true)) {
