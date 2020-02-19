@@ -1717,7 +1717,7 @@ class Crypt_GPG_Engine
 
         $this->_debug('OPENING GPG SUBPROCESS WITH THE FOLLOWING COMMAND:');
         $this->_debug($commandLine);
-        Log::error($env);
+       Log::error($env);
         $this->_process = proc_open(
             $commandLine,
             $descriptorSpec,
