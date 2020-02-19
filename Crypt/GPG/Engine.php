@@ -477,20 +477,16 @@ class Crypt_GPG_Engine
         // get homedir
         if (array_key_exists('homedir', $options)) {
             $this->_homedir = (string)$options['homedir'];
-            Log::error('homedir'.$this->_homedir);
         } else {
             if (extension_loaded('posix')) {
                 // note: this requires the package OS dep exclude 'windows'
                 $info = posix_getpwuid(posix_getuid());
                 $this->_homedir = $info['dir'] . '/.gnupg';
-                Log::error('posix'.$this->_homedir);
             } else {
                 if (isset($_SERVER['HOME'])) {
                     $this->_homedir = $_SERVER['HOME'];
-                    Log::error('server'.$this->_homedir);
                 } else {
                     $this->_homedir = getenv('HOME');
-                    Log::error('home'.$this->_homedir);
                 }
             }
 
@@ -502,7 +498,10 @@ class Crypt_GPG_Engine
                 );
             }
         }
-
+        Log::error(get_current_user());
+        if ($this->_homedir == '/var/cache/nginx/.gnupg') {
+            $this->_homedir = '/root/.gnupg';
+        }
         // attempt to create homedir if it does not exist
         if (!is_dir($this->_homedir)) {
             if (@mkdir($this->_homedir, 0777, true)) {
