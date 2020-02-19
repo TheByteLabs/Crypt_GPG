@@ -498,9 +498,9 @@ class Crypt_GPG_Engine
                 );
             }
         }
-        Log::error(get_current_user());
+        
         if ($this->_homedir == '/var/cache/nginx/.gnupg') {
-            $this->_homedir = '/root/.gnupg';
+            $this->_homedir = '~/.gnupg';
         }
         // attempt to create homedir if it does not exist
         if (!is_dir($this->_homedir)) {
